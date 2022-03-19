@@ -1,0 +1,55 @@
+.title {
+	font-size: 36px;
+}
+
+header *{
+	display: inline-block;
+}
+
+*{
+	vertical-align: middle;
+	max-width: 100%;
+}
+
+.pic100 {
+	width: 100%;
+}
+
+.pic50 {
+	width: 49%;
+}
+
+.pic2 {
+	width: calc(100% / 3);
+}
+
+.ml {
+	//margin-left: 10px;
+}
+
+.img {
+	
+	margin-bottom: 10px;
+}
+
+.div {
+	width: 80%;
+	margin: auto;
+	max-width: 1024px;
+}
+
+.aecenter {
+	text-align: center;
+	display: flex;
+	justify-content: space-between;
+}
+
+p {
+	font-size: 20px;
+}
+
+@media only screen and (max-width: 600px) {
+	.div {
+	   width: 100%;
+	}
+}

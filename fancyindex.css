@@ -1,0 +1,32 @@
+body,html {
+	background: none;
+	font-family: none;
+}
+
+tr:nth-child(even) {
+	background:#f4f4f4;
+}
+
+th,td {
+	padding:0.1em 0.5em;
+}
+
+th {
+	text-align:left;
+	font-weight:bold;
+	background:#eee;
+	border-bottom:1px solid #aaa;
+}
+
+#list {
+	border:1px solid #aaa;
+	width:100%;
+}
+
+a {
+	color: #0000EE;
+}
+
+a:hover {
+	color: #551A8B;
+}

@@ -1,0 +1,89 @@
+body {
+    background-image: url("tile1.jpg");
+    background-repeat: repeat;
+	/*color: red;*/
+}
+
+.home {
+    font-size: 200%;
+
+}
+
+.sec {
+    margin-left: 20px;
+    font-size: 150%;
+
+}
+
+.trd {
+    margin-left: 40px;
+    font-size: 150%;
+
+}
+
+.frh {
+    margin-left: 60px;
+    font-size: 150%;
+
+}
+
+.latest {
+	margin-left: 20px;
+	font-size: 120%;
+}
+
+.hiterbutton {
+    padding: 400px 800px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+
+}
+
+.center {
+    text-align: center;
+
+}
+
+.p150x {
+    font-size: 150%;
+
+}
+
+.data {
+    text-align: justify;
+    margin-left: 10px;
+
+}
+
+.astrophoto {
+	margin-top: 20px;
+	width: 100%;
+}
+
+table, th, td {
+  border: 1px solid black;
+  font-size: 20px;
+}
+
+.text {
+	font-size: 20px;
+}
+
+.offline {
+	color: red;
+}
+
+.online {
+	color: green;
+}
+
+.sang {
+	margin-left: 20px;
+}
+
+
+.counterborder {
+	border-style: double;
+}

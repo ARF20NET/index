@@ -148,7 +148,7 @@
 			<a class="sec" href="/search">Search</a>
 			<a class="sec" href="/piracydisclaimer.txt">Piracy Disclaimer</a>
 			<a class="sec" href="/dmcarequest">DMCA Request</a><br>
-				<a class="trd" href="/memes.php">ah yes, memes</a><br>
+				<a class="trd" href="/memes">ah yes, memes</a><br>
 				<a class="trd" href="/FTPServer/books">Books</a><a class="latest"><?php getlastmodifiedfilename("/d/FTPServer/books"); ?></a><br>
 				<a class="trd" href="/FTPServer/music">Music</a><a class="latest"><?php getlastmodifiedfilename("/d/FTPServer/music"); ?></a><br>
 				<a class="trd" href="/FTPServer/films">Films</a><a class="latest"><?php getlastmodifiedfilename("/d/FTPServer/films"); ?></a><br>

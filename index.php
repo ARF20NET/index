@@ -184,7 +184,7 @@
 		<hr>
 		<span>Sysadmin: arf20. Murcia, Spain. Contact: <a target="_blank" href="mailto:aruizfernandez05@gmail.com">aruizfernandez05@gmail.com</a></span>
 		<a href="/source/LICENSE.txt">Everything in this server is published under GPL v3 license</a>
-		<a href="/">This site design uses arfSites&trade; with copyright &copy; 2022 ARFNET, LLC.</a>
+		<a href="/">This site design uses arfSites&trade; with copyright &copy; <?php echo date('Y'); ?> ARFNET, LLC.</a>
 		<span class="counterborder"> Access counter: <?php include("counter.php"); echo IncrementCounter(); ?> </span><br>
 		<img src="bestvw.gif"><img src="msie.gif"><img src="powered-by-debian.gif"><img src="vim.gif"><img src="powered-by-nginx.gif">
     </body>

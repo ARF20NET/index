@@ -48,7 +48,7 @@
 				<li><a href="/iservices.php">Internet Services</a></li>
 			</ul></li>
 			<li>Private Services<ul>
-				<li>WebHosting, Sites, and files within arf20.com</li>
+				<li>Web Hosting, Sites, and files within arf20.com (WordPress is <b><u>strictly forbidden</u></b>)</li>
 				<li class="soon">Game Server Hosting {Minecraft, FiveM, et cætera} (questionable️)</li>
 				<li>Bot Hosting {Discord...}</li>
 				<li class="soon">Storage by FTP (maybe SFTP)</li>

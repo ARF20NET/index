@@ -79,6 +79,8 @@
 		$line = shell_exec('ls -Rtl --quoting-style=shell-always '.$dir.' | grep "^[-]" | head -1 | sed "s/.$//" | rev | cut -f1 -d"\'" | rev');
 		echo $line;
 	}
+	
+	header("Onion-Location: http://3fkycvcng6p3etyikxuytavkx2rb2wibvzpfarkixzwqyyjm7lzh7zqd.onion/");
 ?>
 
 <!DOCTYPE html>
@@ -130,7 +132,7 @@
 			<img src="arfnet_logo.png" width="64">
 			<span class="title"><strong>ARFNET Home</strong></span>
 		</header>
-		<h3>The arf network, the only diverse service provider backwards compatible with the original Internet. <a href="https://discord.gg/jy6AjN9ACP">Discord</a>  <a href="/latin.php">Now in Latin</a></h2>
+		<h3>The arf network, the only diverse service provider backwards compatible with the original Internet. <a href="https://github.com/ARF20NET">GitHub</a> <a href="https://discord.gg/jy6AjN9ACP">Discord</a>  <a href="/latin.php">Now in Latin</a></h2>
 		<hr>
 		<h2>Index</h2>
 		<a class="home" href="/">Home</a><br>
@@ -182,8 +184,8 @@
 		<a class="sec" href="astro.html">Astrophotography section</a><br>
 		<a class="sec" href="/satimgview">NOAA Ground Station Image Viewer</a><br>
 		<hr>
-		<span>Sysadmin: arf20. Murcia, Spain. Contact: <a target="_blank" href="mailto:aruizfernandez05@gmail.com">aruizfernandez05@gmail.com</a></span>
-		<a href="/source/LICENSE.txt">Everything in this server is published under GPL v3 license</a>
+		<span>Sysadmin: arf20. Murcia, Spain. Contact: <a target="_blank" href="mailto:arf20@arf20.com">arf20@arf20.com</a></span>
+		<a href="/source/LICENSE.txt">Everything in this server by default is published under the GNU General Public License version 3.0</a>
 		<a href="/">This site design uses arfSites&trade; with copyright &copy; <?php echo date('Y'); ?> ARFNET, LLC.</a>
 		<span class="counterborder"> Access counter: <?php include("counter.php"); echo IncrementCounter(); ?> </span><br>
 		<img src="bestvw.gif"><img src="msie.gif"><img src="powered-by-debian.gif"><img src="vim.gif"><img src="powered-by-nginx.gif">

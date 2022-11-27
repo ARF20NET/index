@@ -138,49 +138,47 @@ function update() {
 		<h2>arf DNS domain and Internet IP Address</h2>
 		<span class="text"><b>Current domain:</b> arf20.com</span><br>
 		<span class="text"><b>Public gateway IP address:</b> <?php printIPAddr(); ?></span>
+		<br>
+		<table class="sang">
+			<tr><th>Subdomain</th><th>Service</th></tr>
+			<tr><td>plex.arf20.com</td><td>Plex Media Server (private)</td>
+			<tr><td>qbt.arf20.com</td><td>qBitTorrent-nox seedbox (private)</td>
+		</table>
+		
 		<h2>Available services of the arf network</h2>
 		<table class="sang">
 		
 			<tr><th>Service name</th><th>Application</th><th>Application protocol</th><th>Transport protocol</th><th>IP port</th><th>Host</th><th><a href="?status=true">Status</a></th></tr>
 			
-			<tr><td>Web Server</td><td>nginx 1.18.0</td><td>HTTP</td><td>TCP</td><td>80</td><td>server</td>
+			<tr><td>Web Server</td><td>nginx 1.20.0</td><td>HTTP</td><td>TCP</td><td>80</td><td>server</td>
 				<?php if ($_GET["status"] == "true") { update(); printStatusPort(80); $progress = 1; update(); } ?></tr>
 			
-			<tr><td>Web Server</td><td>nginx 1.18.0</td><td>HTTPS</td><td>TCP</td><td>443</td><td>server</td>
+			<tr><td>Web Server</td><td>nginx 1.20.0</td><td>HTTPS</td><td>TCP</td><td>443</td><td>server</td>
 				<?php if ($_GET["status"] == "true") { update(); printStatusPort(443); $progress++; update(); } ?></tr>
 			
-			<tr><td>RTMP Streaming Ingest</td><td>nginx 1.18.0</td><td>RTMP</td><td>TCP</td><td>1935</td><td>server</td>
+			<tr><td>RTMP Streaming Ingest</td><td>nginx 1.20.0</td><td>RTMP</td><td>TCP</td><td>1935</td><td>server</td>
 				<?php if ($_GET["status"] == "true") { update(); printStatusPort(1935); $progress++; update(); } ?></tr>
 			
-			<tr><td>SSH/SFTP Server (private)</td><td>Bitvise SSH Server</td><td>SSH/SFTP</td><td>TCP</td><td>22</td><td>DESKTOP (hardened decoy for bots)</td>
+			<tr><td>SSH/SFTP Server (private)</td><td>OpenSSH</td><td>SSH/SFTP</td><td>TCP</td><td>22</td><td>server</td>
 				<?php if ($_GET["status"] == "true") { update(); printStatusPort(22); $progress++; update(); } ?></tr>
 			
 			<tr><td>RDP Server (private)</td><td>Windows RDP</td><td>RDP</td><td>TCP</td><td>3389</td><td>DESKTOP</td>
 				<?php if ($_GET["status"] == "true") { update(); printStatusPort(3389); $progress++; update(); } ?></tr>
 			
-			<tr><td>SSH/SFTP Server (private)</td><td>OpenSSH</td><td>SSH/SFTP</td><td>TCP</td><td>24</td><td>raspi</td>
-				<?php if ($_GET["status"] == "true") { update(); printStatusPort(24); $progress++; update(); } ?></tr>
-			
-			<tr><td>FTP Server (private)</td><td>vsftpd</td><td>FTP</td><td>TCP</td><td>21</td><td>server</td>
+			<tr><td>FTP Server</td><td>vsftpd</td><td>FTP</td><td>TCP</td><td>21</td><td>server</td>
 				<?php if ($_GET["status"] == "true") { update(); printStatusPort(21); $progress++; update(); } ?></tr>
+				
+			<tr><td>Tor relay Server</td><td>tor</td><td>tor</td><td>TCP</td><td>9001</td><td>server</td>
+				<?php if ($_GET["status"] == "true") { update(); printStatusPort(9001); $progress++; update(); } ?></tr>
 			
-			<tr><td>PPTP VPN Server (private)</td><td>Poptop pptpd</td><td>PPTP</td><td>TCP</td><td>1723</td><td>raspi (soon server)</td>
+			<tr><td>PPTP VPN Server (private)</td><td>Poptop pptpd</td><td>PPTP</td><td>TCP</td><td>1723</td><td>server</td>
 				<?php if ($_GET["status"] == "true") { update(); printStatusPort(1723); $progress++; update(); } ?></tr>
 			
 			<tr><td>Speed Testing Server</td><td>iperf3</td><td>iperf3</td><td>TCP</td><td>5201</td><td>server</td>
 				<?php if ($_GET["status"] == "true") { update(); printStatusPort(5201); $progress++; update(); } ?></tr>
 			
-			<tr><td>Minecraft Server A (minepau)</td><td>Java Minecraft Server 1.16</td><td>Minecraft idk</td><td>TCP</td><td>25565</td><td>server</td>
+			<tr><td>Minecraft Server B (minepau)</td><td>Java Minecraft Server 1.16</td><td>Minecraft idk</td><td>TCP</td><td>25565</td><td>server</td>
 				<?php if ($_GET["status"] == "true") { update(); printStatusPort(25565); $progress++; update(); } ?></tr>
-			
-			<tr><td>Minecraft Server B (shupapingones)</td><td>Java Minecraft Server 1.16</td><td>Minecraft idk</td><td>TCP</td><td>25566</td><td>DESKTOP</td>
-				<?php if ($_GET["status"] == "true") { update(); printStatusPort(25566); $progress++; update(); } ?></tr>
-			
-			<tr><td>RTL-TCP Server</td><td>rtl_tcp</td><td>whatever rtl_tcp uses</td><td>TCP</td><td>1234</td><td>DESKTOP</td>
-				<?php if ($_GET["status"] == "true") { update(); printStatusPort(1234); $progress++; update(); } ?></tr>
-				
-			<tr><td>NTP Server</td><td>ntpd</td><td>NTP</td><td>UDP</td><td>123</td><td>server</td>
-				<?php if ($_GET["status"] == "true") { update(); $progress++; update(); } ?></tr>
 			
 		</table>
 		
@@ -192,10 +190,31 @@ function update() {
 			<tr><td>raspi</td><td><?php echo $subnet."14"; ?></td><?php if ($_GET["status"] == "true") { update(); printHostStatus($subnet."14"); $progress++; update(); } ?></tr>
 		</table>
 		
+		<h2>server uptime</h2>
+		<?php 
+			$url = "http://arf20.com/cgi-bin/uptime.sh";
+
+			$curl = curl_init($url);
+			curl_setopt($curl, CURLOPT_URL, $url);
+			curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
+
+			$headers = array(
+			   "Accept: */*",
+			);
+			curl_setopt($curl, CURLOPT_HTTPHEADER, $headers);
+			//for debug only!
+			curl_setopt($curl, CURLOPT_SSL_VERIFYHOST, false);
+			curl_setopt($curl, CURLOPT_SSL_VERIFYPEER, false);
+
+			$resp = curl_exec($curl);
+			curl_close($curl);
+			echo $resp;
+			
+		?>
+		
 		<h2>ARFNET ISP backbone</h2>
-		<span class="text"><b>Current ISP:</b> vodafone (ono)</span><br>
-		<span class="text"><b>Type of backbone:</b> cable</span><br>
-		<span class="text"><b>Speed:</b> 600mbps downlink, 100mbps uplink</span><br>
-		<span class="text"><b>Router:</b> ISP provided, cablemodem + router + wap</span><br>
+		<span class="text"><b>Current ISP:</b> avanzafibra</span><br>
+		<span class="text"><b>Type of backbone:</b> FTTH</span><br>
+		<span class="text"><b>Speed:</b> 1000/10000</span><br>
     </body>
 </html>

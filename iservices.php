@@ -1,7 +1,7 @@
 <?php
 $hostname = "arf20.com";
 
-$subnet = "192.168.0.";
+$subnet = "192.168.4.";
 
 if (!isset($_GET["status"])) {
 	$_GET["status"] = "false";
@@ -142,42 +142,40 @@ function update() {
 		<table class="sang">
 			<tr><th>Subdomain</th><th>Service</th></tr>
 			<tr><td>plex.arf20.com</td><td>Plex Media Server (private)</td>
-			<tr><td>qbt.arf20.com</td><td>qBitTorrent-nox seedbox (private)</td>
 		</table>
 		
-		<h2>Available services of the arf network</h2>
+		<h2>Core internet services of the arf network</h2>
 		<table class="sang">
 		
 			<tr><th>Service name</th><th>Application</th><th>Application protocol</th><th>Transport protocol</th><th>IP port</th><th>Host</th><th><a href="?status=true">Status</a></th></tr>
 			
-			<tr><td>Web Server</td><td>nginx 1.20.0</td><td>HTTP</td><td>TCP</td><td>80</td><td>server</td>
+			<tr><td>Web Server</td><td>nginx</td><td>HTTP</td><td>TCP</td><td>80</td><td>server</td>
 				<?php if ($_GET["status"] == "true") { update(); printStatusPort(80); $progress = 1; update(); } ?></tr>
 			
-			<tr><td>Web Server</td><td>nginx 1.20.0</td><td>HTTPS</td><td>TCP</td><td>443</td><td>server</td>
+			<tr><td>Web Server</td><td>nginx</td><td>HTTPS</td><td>TCP</td><td>443</td><td>server</td>
 				<?php if ($_GET["status"] == "true") { update(); printStatusPort(443); $progress++; update(); } ?></tr>
-			
-			<tr><td>RTMP Streaming Ingest</td><td>nginx 1.20.0</td><td>RTMP</td><td>TCP</td><td>1935</td><td>server</td>
-				<?php if ($_GET["status"] == "true") { update(); printStatusPort(1935); $progress++; update(); } ?></tr>
-			
-			<tr><td>SSH/SFTP Server (private)</td><td>OpenSSH</td><td>SSH/SFTP</td><td>TCP</td><td>22</td><td>server</td>
-				<?php if ($_GET["status"] == "true") { update(); printStatusPort(22); $progress++; update(); } ?></tr>
-			
-			<tr><td>RDP Server (private)</td><td>Windows RDP</td><td>RDP</td><td>TCP</td><td>3389</td><td>DESKTOP</td>
-				<?php if ($_GET["status"] == "true") { update(); printStatusPort(3389); $progress++; update(); } ?></tr>
 			
 			<tr><td>FTP Server</td><td>vsftpd</td><td>FTP</td><td>TCP</td><td>21</td><td>server</td>
 				<?php if ($_GET["status"] == "true") { update(); printStatusPort(21); $progress++; update(); } ?></tr>
+
+			<tr><td>SSH/SFTP Server (private)</td><td>OpenSSH</td><td>SSH/SFTP</td><td>TCP</td><td>22</td><td>server</td>
+				<?php if ($_GET["status"] == "true") { update(); printStatusPort(22); $progress++; update(); } ?></tr>
+
+			<tr><td>NTP Server (in pool.ntp.org)</td><td>ntpd</td><td>NTP</td><td>UDP</td><td>123</td><td>server</td></tr>
+
+			<tr><td>OpenVPN Server (private)</td><td>openvpn</td><td>OpenVPN</td><td>TCP</td><td>1194</td><td>server</td>
+				<?php if ($_GET["status"] == "true") { update(); printStatusPort(1194); $progress++; update(); } ?></tr>
+
+			<tr><td>RTMP Streaming Ingest</td><td>nginx</td><td>RTMP</td><td>TCP</td><td>1935</td><td>server</td>
+				<?php if ($_GET["status"] == "true") { update(); printStatusPort(1935); $progress++; update(); } ?></tr>
 				
-			<tr><td>Tor relay Server</td><td>tor</td><td>tor</td><td>TCP</td><td>9001</td><td>server</td>
-				<?php if ($_GET["status"] == "true") { update(); printStatusPort(9001); $progress++; update(); } ?></tr>
-			
-			<tr><td>PPTP VPN Server (private)</td><td>Poptop pptpd</td><td>PPTP</td><td>TCP</td><td>1723</td><td>server</td>
-				<?php if ($_GET["status"] == "true") { update(); printStatusPort(1723); $progress++; update(); } ?></tr>
-			
 			<tr><td>Speed Testing Server</td><td>iperf3</td><td>iperf3</td><td>TCP</td><td>5201</td><td>server</td>
 				<?php if ($_GET["status"] == "true") { update(); printStatusPort(5201); $progress++; update(); } ?></tr>
+
+			<tr><td>Tor relay</td><td>tor</td><td>tor</td><td>TCP</td><td>9001</td><td>server</td>
+				<?php if ($_GET["status"] == "true") { update(); printStatusPort(9001); $progress++; update(); } ?></tr>
 			
-			<tr><td>Minecraft Server B (minepau)</td><td>Java Minecraft Server 1.16</td><td>Minecraft idk</td><td>TCP</td><td>25565</td><td>server</td>
+			<tr><td>Minecraft Server (minepau)</td><td>Java Minecraft Server 1.16</td><td>minecraft</td><td>TCP</td><td>25565</td><td>server</td>
 				<?php if ($_GET["status"] == "true") { update(); printStatusPort(25565); $progress++; update(); } ?></tr>
 			
 		</table>
@@ -185,9 +183,9 @@ function update() {
 		<h2>ARFNET Hosts</h2>
 		<table class="sang">
 			<tr><th>Host</th><th>IP</th><th>Status</th></tr>
-			<tr><td>server</td><td><?php echo $subnet."4"; ?></td><?php if ($_GET["status"] == "true") { update(); printHostStatus($subnet."4"); $progress++; update(); } ?></tr>
-			<tr><td>desktop</td><td><?php echo $subnet."8"; ?></td><?php if ($_GET["status"] == "true") { update(); printHostStatus($subnet."8"); $progress++; update(); } ?></tr>
-			<tr><td>raspi</td><td><?php echo $subnet."14"; ?></td><?php if ($_GET["status"] == "true") { update(); printHostStatus($subnet."14"); $progress++; update(); } ?></tr>
+			<tr><td>opnsense</td><td><?php echo $subnet."1"; ?></td><?php if ($_GET["status"] == "true") { update(); printHostStatus($subnet."1"); $progress++; update(); } ?></tr>
+			<tr><td>proxmox</td><td><?php echo $subnet."4"; ?></td><?php if ($_GET["status"] == "true") { update(); printHostStatus($subnet."4"); $progress++; update(); } ?></tr>
+			<tr><td>servervm</td><td><?php echo $subnet."6"; ?></td><?php if ($_GET["status"] == "true") { update(); printHostStatus($subnet."6"); $progress++; update(); } ?></tr>
 		</table>
 		
 		<h2>server uptime</h2>

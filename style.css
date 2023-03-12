@@ -1,7 +1,6 @@
 body {
     background-image: url("tile1.jpg");
     background-repeat: repeat;
-	/*color: red;*/
 }
 
 .home {
@@ -87,3 +86,13 @@ table, th, td {
 .counterborder {
 	border-style: double;
 }
+
+header {
+    vertical-align: middle;
+}
+
+.title {
+	font-size: 36px;
+    vertical-align: middle;
+}
+

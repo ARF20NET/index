@@ -23,6 +23,19 @@ header *{
 	width: calc(100% / 3);
 }
 
+.row {
+	display: flex;
+}
+
+.col {
+	flex: 33%;
+}
+
+.col2 {
+	float: left;
+	width: 100%;
+}
+
 .ml {
 	//margin-left: 10px;
 }
@@ -33,7 +46,7 @@ header *{
 }
 
 .div {
-	width: 80%;
+	//width: 80%;
 	margin: auto;
 	max-width: 1024px;
 }

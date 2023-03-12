@@ -40,23 +40,24 @@
 			<li>Public Services
 			<ul>
 				<li>Web Services<ul>
-					<li>Media library (films, software and random stuff)</li>
-					<li>Web Streaming (in RTMP, out HLS)</li>
-					<li>arf20's personal C/C++/C# repository</li>
+					<li>Media library (films, series, software and books)</li>
+					<li>Web Streaming (RTMP in, HLS out)</li>
+					<li>arf20's old C/C++/C# repository archive</li>
 					<li><i>Memes</i></li>
 				</ul></li>
 				<li><a href="/iservices.php">Internet Services</a></li>
 			</ul></li>
 			<li>Private Services<ul>
 				<li>Web Hosting, Sites, and files within arf20.com (WordPress is <b><u>strictly forbidden</u></b>)</li>
-				<li class="soon">Game Server Hosting {Minecraft, FiveM, et cætera} (questionable️)</li>
-				<li>Bot Hosting {Discord...}</li>
-				<li class="soon">Storage by FTP (maybe SFTP)</li>
+				<li>Game Server Hosting {Minecraft, FiveM, et cætera}</li>
+				<li>Bot Hosting {Discord, telegram...}</li>
+				<li>Storage by FTP & SFTP</li>
 				<li>arfCloud (Web Cloud Storage by HTTP)</li>
-				<li>Other server hosting</li>
-				<li class="soon">SSH Shell Access & Compute Time (soon™️)</ul></li>
+				<li>Anything really</li>
+				<li>VPS (KVM VM) with SSH Shell Access (<b><u>no Windows</u></b>)</li>
+				<li>OpenVPN VPN</li></ul>
 			</li>
 		</ul>
-		<p>All services listed here are completely FREE, although accessible only through my contact, by discord if possible arf20#6509</p>
+		<p>All services listed here are completely FREE (for friends xd). To hire a service, talk to me by discord if possible arf20#6509</p>
 	</body>
 </html>	

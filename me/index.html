@@ -17,21 +17,31 @@
 		<main>
 			<h2 class="center">About me [arf20]</h2>
 			<div class="div">	
-				<p>Hello there, I'm arf20 [ä.ɛrɛ.ɛfɛ.veɪn.tɛ] (EA5JGX), an average spanish studient, with not that average hobbies. Like proud sysadmin of ARFNET.
-				Another of my hobbies is programming (not in that cringe language called python), I do C++ mainly. Sometimes C and C#, even Java.
-				I also did a little of x86 and Z80 assmembly. Web applications are not my stuff (ex. Client side JS, node.js, PHP), this website is just static HTML/CSS with some PHP.
-				You can have a look of my cringy VS repository <a href="/source">here</a>.
-				On the other hand, I love server stuff, providing services to the internet, like this very website, SSH, minecraft servers... et caetera.
-				And recently, I got a R720 off ebay, so this is going very nuts! It has 2x Xeon E5-2670 v2 running at 2.6GHz, 16GB RAM ECC DDR3 1600MHz (I'll expand it),
-				with a PERC H710p RAID controller with a 4TB IronWolf attached, in RAID0.
-				But where do you put servers? In a rack, but I dont have room for a standard one, and they are expensive,
-				so I plan to get a specially designed wood rack built. I will hopefully kick my current ISP (vodafone), and get a proper fiber backbone, with a rackmounted router, and switches.</p>
-				<div class="center"><img class="pic100" src="/me/r720.jpg"></div>
-				<p>Thats what I call a homelab! Now lets talk about my main workstation.
-				A Ryzen 7 3700x 3.8GHz, 32GB RAM DDR4 3200MHz, GTX 1660 Super, 512GB M.2 NVMe SSD, and a 1TB old HDD. Fair enough ;).
-				I noted the serious lack of space, so I use the drive in R720 as a network drive over SMB, and use it to install and run software over the network in my PC.</p>
+				<p>Hello there, I'm arf20 [ä.ɛrɛ.ɛfɛ.veɪn.tɛ] (EA5JGX), a 17 year old bi femboy spanish student obsessed with linux.</p>
+					
+				<h1>What I do</h1>
+				<p>
+				I am the main (and only) system administrator of the ARFNET project, responsible of maintaining all of theese services, hosts, and adding content.<br>
+
+				I love enterprise hardware and stuff, using it to provide services to the internet, like this very website, SSH, minecraft servers... et cætera.
+				Some time ago I got R720 off ebay, so that went nuts, it has 2x Xeon E5-2670 v2 clocked at 2.6GHz, and recently 64GB of RAM, running god bless Proxmox.
+				with a PERC H710p RAID controller with 7x 3TB HGST drives (18TB RAID5) and a 4TB Barracuda scored from ebay as well.
+				It combines with a DELL PowerConnect switch, I have 3 lol, and an old Cisco, but I don't use it. A year back I kicked my old ISP, Vodafone, god it was awful but now
+				I am a happy customer of Avanzafibra, with a 1000mbps FTTH backbone, with a separate ONT connected to my new router, a OPNSense VM. I used to use a Mikrotik RB2011UiaS-RM 
+				but turns out it sucks (can't do NAT fast enough).</p>
+				<div class="center"><img class="pic50" src="/FTPServer/arfnetwork/rack.jpg"></div>
+
+				<p>
+				But my real passion is programming (not in that cringe language so called python), I do C/C++, for graphical and cool networking shit.
+				I also did a little of x86 and Z80 assmembly. Web applications are not my stuff (PHP, I hate JS, node.js), this website is just static HTML/CSS with some PHP.
+				You can have a look of my <a href="https://github.com/arf20">github</a>, and the <a href="/source">old VS archive here</a>.<br>
+				
+				<p>Thats what I call a homelab! Now here is my workstation setup.
+				A Ryzen 7 3700x 3.8GHz, 32GB RAM DDR4 3200MHz, GTX 1660 Super, 1TB NVMe Crucial and 512GB, and a 1TB old HDD. Fair enough ;).
+				It's linked to the server via NFS, very convenient.</p>
 				<div class="center"><img class="pic100" src="/me/setup.jpg"></div>
-				<p>My next hobby is a unexpected one. Although I wan't born early enough to live it first hand, but I love retrocomputing, and old electronics in general really.
+
+				<p>My next hobby is a classic one. Although I wan't born early enough to live it first hand, but I love retrocomputing, and old electronics in general really.
 				I was always interested in old Windows versions, my first laptop was a old Fujistsu Siemens Amilo D something with Win XP,
 				old for the time, but still worked for what I wanted to do, learn BATCH and BASIC. Then I discovered VMs, specifically DOSBOX, it was fun.
 				But VMs wasn't enough, I wanted actual hardware, so my uncle gifted me a 486 VLB motherboard (486dx-33, 4MB 30-pin SIMM, all cache installed),
@@ -40,22 +50,30 @@
 				lacked RAM to run some stuff. Borland C++ 4.5 worked tho, where my 2 hobbies overlap, I learned Win16 API. I also got a 10mbps NIC, and connected my almost 30 year old 486 to the 
 				actual internet, but I couldn't do much apart from FTP, Telnet, IRC... Most of the internet nowdays is HTTPS forced, with TLS 1.2 required,
 				which not a lot of old browsers support. Thats why I allow bare HTTP in my webserver, you ain't gonna fill forms here anyways.
-				The funny thing is that I made all of that whithout even having the 486 in a box. Now the 486 is left aside, I'm in other projects.</p>
-				<div class="center"><img class="pic100" src="/me/486.jpg"></div><div class="center"><img class="pic100" src="/me/w31.jpg"></div>
-				<p>Other projects like RF, ham radio, SDRs... I got a CB radio (I thought it was still popular) but I was really dissappointed to hear just static everywhere.
-				I was told about SDRs, and how they can listen to almost the entirety of the spectrum, and to get a RTL-SDR v3, and so I did. I got generic telescopic antennas
-				so I didn't pick much aside from the commercial FM bands. Then I discovered the Thought Emporium channel and how anyone can receive images of earth from weather satellites
-				like NOAAs and METEORs, I was really impressed.
-				So I started looking antenna designs, and apparently the double cross antenna was a good option, but not for amateurs. I recently finally built it, but it doesnt perform as expected.
-				I guess there are design flaws, so I trashed it and built a simpler V dipole and it worked fine. And I got a Nooelec LNA just to try to get the best signal I possibly can.
-				Now I'm looking forward on building a permament automatic station.</p>
-				<img class="pic50" src="/me/ant.jpg"><img class="pic50" src="/me/sdrsharp.jpg">
-				<p>And how leave aside electronics! My father encouraged me in it. As i like old computers I got some old Z80s and SRAM chips off ebay but they were bad, so the project is in essence paused.
-				I also encounter fun high voltage and high power electronics, I made some dangerous stuff with TV flyback transformers, and looking for microwave transformers too.
-				I also love when my hobbies fuse together, like spark gap radio. It has HV, RF transmission and it is the first method of radio transmission, that goes back to the end of the XIX century, when Marconi itself made it reliably.</p>
+				The funny thing is that I made all of that whithout even having the 486 in a box. Now the 486 is a bit abandoned though.</p>
+				<div class="center"><img class="pic100" src="/me/486.jpg"></div><div class="center"><img class="pic50" src="/me/w31.jpg"><img class="pic50" src="/me/retrocollect.jpg"></div>
+
+				<p>And finally, I'm into RF, ham radio, SDRs... I got a CB radio (I thought it was still popular) but I was really dissappointed to hear just static everywhere.
+				I was inspired by the Thought Emporium channel to get a RTL-SDR v3 and listen to weather satellites, and so I did. I got generic telescopic antennas
+				so I didn't pick much aside from the commercial FM bands. So I started looking antenna designs, and apparently the double cross antenna was a good option,
+				Then built it, and it was very fun receiving NOAA and METEOR pictures, so I decided to make a <a href="/satimgview">permanent automatic station</a>.<br>
+				And a bit later I fanally took the exam and became a licensed ham radio operator, callsign EA5JGX, and immidiately got a Baofeng.
+				Next, I should get a PlutoSDR for the L band parabolic antenna I did.</p>
+				<div class="row">
+					<div class="col">
+						<img class="pic100" src="/me/ant.jpg">
+					</div>
+					<div class="col">
+						<img class="pic100" src="/me/sdrsharp.jpg"><img class="pic100" src="/me/dish.jpg">
+					</div>
+				</div>
+
+				<p>And how leave aside electronics! My father encouraged me in it from an early age. As I like old computers I got into digital stuff, some old Z80s and SRAM chips off ebay but they were bad, so the project is in essence paused.
+				I also encounter fun high voltage and high power electronics, I made some dangerous stuff with TV flyback transformers, and dangerous MOTs too.
+				God I love when my hobbies fuse together, like spark gap radio. It has HV and RF transmission and it is the first method of radio transmission, that goes back to the end of the XIX century, when Marconi itself made it reliably.</p>
 				<div class="center"><img class="pic100" src="/me/z80.jpg"></div><div class="center"><img class="pic100" src="/me/hv.jpg"></div>
 			</div>
-			<p>Updated as of 11-09-2021</p>
+			<p>Updated as of 04-03-2023</p>
 		</main>
     </body>
 </html>

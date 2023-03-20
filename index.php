@@ -1,8 +1,4 @@
 <?php
-	$live = false;
-	if (file_exists("/mnt/hls/arf20.m3u8"))
-		$live = true;
-		
 	function getDirList($dir) {
 		// array to hold return value
 		$retval = [];
@@ -79,6 +75,31 @@
 		$line = shell_exec('ls -Rtl --quoting-style=shell-always '.$dir.' | grep "^[-]" | head -1 | sed "s/.$//" | rev | cut -f1 -d"\'" | rev');
 		echo $line;
 	}
+
+	function getStreams() {
+		$ch = curl_init();
+		curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+		curl_setopt($ch, CURLOPT_URL, "http://arf20.com/hls/");
+		curl_setopt($ch, CURLOPT_SSH_COMPRESSION, true);
+		curl_setopt_array($ch, [
+				CURLOPT_RETURNTRANSFER => true,
+				CURLOPT_URL => "https://arf20.com/hls/"
+		]);
+		$result = curl_exec($ch);
+
+		$streams = array();
+
+		$line = strtok($result, "\n");
+		while ($line !== false) {
+			$line = strtok("\n");
+			if (!strpos($line, ".m3u8")) continue;
+			$p = strpos($line, "href=\"") + 6;
+			array_push($streams, substr($line, $p, strpos($line, ".m3u8") - $p));
+			//array_push($streams, $line);
+		}
+
+		return $streams;
+	}
 	
 	header("Onion-Location: http://3fkycvcng6p3etyikxuytavkx2rb2wibvzpfarkixzwqyyjm7lzh7zqd.onion/");
 ?>
@@ -87,12 +108,12 @@
 <html>
     <head>
 		<meta charset="UTF-8">
-		<meta property="og:site_name" content="ARFNET" />
-		<meta property="og:type" content="website" />
-		<meta property="og:url" content="https://arf20.com/" />
-		<meta property="og:title" content="ARFNET Home" />
-		<meta property="og:description" content="The arf network, the only updated site backwards compatible with the original Web." />
-		<meta property="og:image" content="http://arf20.com/arfnet_logo.png" />
+		</meta content="ARFNET" property="og:site_name" />
+		</meta content="website" property="og:type" />
+		</meta content="https://arf20.com/" property="og:url" />
+		</meta content="ARFNET Home" property="og:title" />
+		</meta content="The arf network, the only updated site backwards compatible with the original Web." property="og:description" />
+		</meta content="http://arf20.com/arfnet_logo.png" property="og:image" />
 		
 		<link rel="shortcut icon" href="/favicon.ico" />
 		
@@ -124,6 +145,13 @@
 				display: inline-block;
 				margin-left: 20px;
 			}
+
+			<?php 
+				if ($_GET["theme"] == "dark") {
+					echo "body { background-image: url(\"tile2.gif\"); background-repeat: repeat; } ";
+					echo "h1,h2,h3,h4,span { color: white; } ";
+				}
+			?>
 		</style>
     </head>
 
@@ -133,7 +161,9 @@
 			<span class="title"><strong>ARFNET Home</strong></span>
 		</header>
 		<h3>The arf network, the only diverse service provider backwards compatible with the original Internet.<br>
-		<a href="https://discord.gg/jy6AjN9ACP">Discord</a> <a href="/latin.php">Now in Latin</a></h2>
+		<a href="https://discord.gg/jy6AjN9ACP">Discord</a>
+		<a href="/latin.php">Now in Latin</a>
+		<a href="?theme=dark">Dark theme</a></h3>
 		<hr>
 		<h2>Index</h2>
 		<a class="home" href="/">Home</a><br>
@@ -151,32 +181,41 @@
 				<a class="sec" href="/donate.php">Donate</a><br>
 		<a class="trd" href="/arfCloud/login.php">arfCloud</a><br>
 		<a class="sec" href="/bulletin/">Bulletin and updates</a><br>
-		<a class="sec" href="/stream">Stream</a><div class="<?php if ($live) echo "live"; else echo "nolive"; ?>"><span><?php if ($live) echo "On Live NOW"; else echo "Not live"; ?></span></div><br>
+		<a class="sec" href="/stream">Stream</a><?php
+			$streams = getStreams();
+			if (sizeof($streams) > 0) {
+				echo "<div class=\"live\"><span>Live NOW: ";
+				foreach (getStreams() as $stream) {
+					echo $stream.' ';
+				}
+				echo "</span></div>";
+			}
+			?><br>
 		<a class="sec" href="/FTPServer/?C=M&O=D">File Server (random shit)</a>
 			<a class="sec" href="/search">Search</a>
 			<a class="sec" href="/dmcarequest">DMCA Request</a><br>
 				<a class="trd" href="/memes">ah yes, memes</a><br>
-				<a class="trd" href="/FTPServer/books">Books</a><a class="latest"><?php getlastmodifiedfilename("/d/FTPServer/books"); ?></a><br>
-				<a class="trd" href="/FTPServer/music">Music</a><a class="latest"><?php getlastmodifiedfilename("/d/FTPServer/music"); ?></a><br>
-				<a class="trd" href="/FTPServer/films">Films</a><a class="latest"><?php getlastmodifiedfilename("/d/FTPServer/films"); ?></a><a class="latest" href="/player">Player</a><br>
+				<a class="trd" href="/FTPServer/books">Books</a><span class="latest"><?php getlastmodifiedfilename("/d/FTPServer/books"); ?></span><br>
+				<a class="trd" href="/FTPServer/music">Music</a><span class="latest"><?php getlastmodifiedfilename("/d/FTPServer/music"); ?></span><br>
+				<a class="trd" href="/FTPServer/films">Films</a><span class="latest"><?php getlastmodifiedfilename("/d/FTPServer/films"); ?></span><a class="latest" href="/player">Player</a><br>
 					<a class="frh" href="/FTPServer/films/STAR%20WARS">Star Wars</a><br>
-				<a class="trd" href="/FTPServer/series">Series</a><a class="latest"><?php getlastmodifiedfilename("/d/FTPServer/series"); ?></a><br>
+				<a class="trd" href="/FTPServer/series">Series</a><span class="latest"><?php getlastmodifiedfilename("/d/FTPServer/series"); ?></span><br>
 					<a class="frh" href="/FTPServer/series/Doctor%20Who">Doctor Who</a><br>
-				<a class="trd" href="/FTPServer/OS">OS</a><a class="latest"><?php getlastmodifiedsubdirname("/d/FTPServer/OS"); ?></a><br>
-				<a class="trd" href="/FTPServer/software">Software</a><a class="latest"><?php getlastmodifiedfilename("/d/FTPServer/software/amd64-win"); ?></a><br>
-				<a class="trd" href="/FTPServer/torrents">Torrents</a><a class="latest"><?php getlastmodifiedfilename("/d/FTPServer/torrents"); ?></a><br>
-				<a class="trd" href="/FTPServer/leaks">Leaks</a><a class="latest"><?php getlastmodifieddirname("/d/FTPServer/leaks"); ?></a><br>
+				<a class="trd" href="/FTPServer/OS">OS</a><span class="latest"><?php getlastmodifiedsubdirname("/d/FTPServer/OS"); ?></span><br>
+				<a class="trd" href="/FTPServer/software">Software</a><span class="latest"><?php getlastmodifiedfilename("/d/FTPServer/software/amd64-win"); ?></span><br>
+				<a class="trd" href="/FTPServer/torrents">Torrents</a><span class="latest"><?php getlastmodifiedfilename("/d/FTPServer/torrents"); ?></span><br>
+				<a class="trd" href="/FTPServer/leaks">Leaks</a><span class="latest"><?php getlastmodifieddirname("/d/FTPServer/leaks"); ?></span><br>
 		<a class="sec" href="/source?C=M&O=D">Old C/C++/C# Windows VS repository archive</a><br>
-		<a class="sec" href="/java">Old java repository archive</a><br>
+		<a class="sec" href="/FTPServer/java">Old java repository archive</a><br>
 		<a class="sec" href="/FTPServer/distribution">Distributions</a><br>
 		<a class="sec" href="astro.html">Astrophotography section</a><br>
 		<a class="sec" href="/satimgview">NOAA Ground Station Image Viewer (broken)</a><br>
 		<a class="sec" href="/webring.html">Webring</a><br>
 
 		<hr>
-		<span>Last modification 12-03-2023. Estabished somewhere around 2020. Sysadmin: arf20. Contact: <a target="_blank" href="mailto:arf20@arf20.com">arf20@arf20.com</a>Murcia, Spain.</span><br>
+		<span>Last modification 12-03-2023. Estabished somewhere around 2020. Sysadmin: arf20. Contact: <a target="_blank" href="mailto:arf20@arf20.com">arf20@arf20.com</a> arf20#6509 Murcia, Spain.</span><br>
 		<a href="/source/LICENSE.txt">Everything in this server by default is published under the GNU General Public License version 3.0</a>
-		<a href="/">This site design uses arfSites&trade; with copyright &copy; <?php echo date('Y'); ?> ARFNET, LLC.</a>
+		<a href="/">Copyright &copy; <?php echo date('Y'); ?> ARFNET, LLC.</a>
 		<span class="counterborder"> Access counter: <?php include("counter.php"); echo IncrementCounter(); ?> </span><br>
 		<img src="gifbuttons/bestvw.gif">
 		<img src="gifbuttons/vim.gif">
